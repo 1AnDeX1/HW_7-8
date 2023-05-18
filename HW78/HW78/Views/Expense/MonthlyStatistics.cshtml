@@ -1,0 +1,14 @@
+﻿@model List<MonthlyStatisticsViewModel>
+
+<h2>Ежемесячная статистика расходов</h2>
+
+@foreach (var item in Model)
+{
+    <h3>@item.Month</h3>
+    <ul>
+        @foreach (var category in item.CategoryStatistics)
+        {
+            <li>@category.CategoryName: @category.TotalCost</li>
+        }
+    </ul>
+}

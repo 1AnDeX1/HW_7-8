@@ -1,0 +1,27 @@
+﻿@model HW78.Models.Expense
+
+<h2>Удаление расхода</h2>
+
+<p>Вы уверены, что хотите удалить следующий расход?</p>
+
+<div>
+    <h4>Расход</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Категория</dt>
+        <dd class="col-sm-10">@Model.Category.Name</dd>
+
+        <dt class="col-sm-2">Стоимость</dt>
+        <dd class="col-sm-10">@Model.Cost</dd>
+
+        <dt class="col-sm-2">Комментарий</dt>
+        <dd class="col-sm-10">@Model.Comment</dd>
+    </dl>
+
+    <form method="post" asp-action="DeleteConfirmed" asp-controller="Expense" asp-route-id="@Model.Id" method="post">
+        <div class="form-group">
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            <a asp-action="Index">Отмена</a>
+        </div>
+    </form>
+</div>

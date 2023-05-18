@@ -1,0 +1,31 @@
+﻿@model List<ExpenseCategoryViewModel>
+
+<h2>Учет расходов по категориям</h2>
+
+@foreach (var category in Model)
+{
+    <h3>@category.CategoryName</h3>
+    <p>Общая стоимость: @category.TotalCost</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Стоимость</th>
+                <th>Дата</th>
+                <th>Комментарий</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var expense in category.Expenses)
+            {
+                <tr>
+                    <td>@expense.Cost</td>
+                    <td>@expense.Date.ToShortDateString()</td>
+                    <td>@expense.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <hr />
+}

@@ -1,0 +1,36 @@
+﻿@model List<Expense>
+
+<h2>Список расходов</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Категория</th>
+            <th>Стоимость</th>
+            <th>Комментарий</th>
+            <th>Дата</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expense in Model)
+        {
+            <tr>
+                <td>@expense.CategoryId</td>
+                <td>@expense.Cost</td>
+                <td>@expense.Comment</td>
+                <td>@expense.Date.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = expense.Id })">Редактировать</a> |
+                    <a href="@Url.Action("Delete", new { id = expense.Id })">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-controller="Expense" asp-action="Create" class="btn btn-primary">Добавить новый расход</a>
+
+    @*<a href="@Url.Action("Create")">Добавить новый расход</a>*@
+</p>
